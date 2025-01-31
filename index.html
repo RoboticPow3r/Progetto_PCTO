@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming Webcam - Doppio Video Verticale</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Evita le barre di scorrimento */
+            background-color: #000; /* Sfondo nero per migliorare l'effetto */
+        }
+        .video-container {
+            display: flex;
+            flex-direction: column; /* Dispone i video verticalmente */
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+        img {
+            width: 100%; /* Ogni video prende tutta la larghezza disponibile */
+            height: 50%; /* Ogni video prende metà dell'altezza dello schermo */
+            object-fit: cover; /* Assicura che il video copra tutto senza distorsioni */
+        }
+
+        /* Stili per i dispositivi mobili */
+        @media (max-width: 768px) {
+            .video-container {
+                flex-direction: column; /* I video sono già disposti verticalmente anche sui dispositivi mobili */
+            }
+            img {
+                width: 100%; /* Ogni video occupa tutta la larghezza sul telefono */
+                height: 50%; /* Ogni video prende metà altezza sul telefono */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <!-- Usa un tag img per il flusso MJPEG -->
+        <img src="http://127.0.0.1:5000/video" alt="Streaming Webcam" />
+        <img src="http://127.0.0.1:5000/video" alt="Streaming Webcam" />
+    </div>
+</body>
+</html>
+
