@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming Webcam - Doppio Video Verticale</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Evita le barre di scorrimento */
+            background-color: #000; /* Sfondo nero per migliorare l'effetto */
+        }
+        .video-container {
+            display: flex;
+            flex-direction: row; /* Dispone i video orizzontalmente */
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+        video {
+            width: 50%; /* Ogni video prende metà della larghezza */
+            height: 100%; /* Ogni video occupa l'intera altezza disponibile */
+            object-fit: cover; /* Assicura che il video copra tutto senza distorsioni */
+        }
+
+        /* Stili per i dispositivi mobili */
+        @media (max-width: 768px) {
+            .video-container {
+                flex-direction: column; /* Cambia l'orientamento in verticale sui dispositivi mobili */
+            }
+            video {
+                width: 100%; /* Ogni video occupa tutta la larghezza sul telefono */
+                height: 50%; /* Ogni video prende metà altezza sul telefono */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video id="webcamVideo1" autoplay playsinline></video>
+        <video id="webcamVideo2" autoplay playsinline></video>
+    </div>
+
+    <script>
+        // Funzione per avviare il flusso video dalla webcam
+        async function startWebcam() {
+            try {
+                // Ottieni il flusso video dalla webcam con una risoluzione più bassa per ridurre il carico
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { width: 1280, height: 720 } // Risoluzione ridotta per ridurre il carico
+                });
+
+                // Aggiungi il flusso alla sorgente dei due video
+                const videoElement1 = document.getElementById('webcamVideo1');
+                const videoElement2 = document.getElementById('webcamVideo2');
+                
+                videoElement1.srcObject = stream;
+                videoElement2.srcObject = stream;
+
+                // Ottimizzazione per il rendering video
+                syncVideoRendering();
+            } catch (error) {
+                console.error('Errore nell\'accesso alla webcam: ', error);
+                alert('Impossibile accedere alla webcam.');
+            }
+        }
+
+        // Funzione di sincronizzazione per migliorare il rendering
+        function syncVideoRendering() {
+            requestAnimationFrame(syncVideoRendering); // Sincronizza il video con il refresh rate del monitor
+            const videoElement1 = document.getElementById('webcamVideo1');
+            const videoElement2 = document.getElementById('webcamVideo2');
+            
+            videoElement1.play();
+            videoElement2.play();
+        }
+
+        // Avvia la webcam quando il sito viene caricato
+        window.onload = startWebcam;
+    </script>
+</body>
+</html>
