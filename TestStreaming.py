@@ -17,14 +17,52 @@ from picamera2.outputs import FileOutput
 PAGE = """\
 <html>
 <head>
-<title>picamera2 MJPEG streaming demo</title>
+<title>Telecamera RoboticPow3r!!!</title>
+  <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Evita le barre di scorrimento */
+            background-color: #000; /* Sfondo nero per migliorare l'effetto */
+        }
+        .contenitore {
+            display: flex;
+            flex-direction: row; /* Dispone i video orizzontalmente */
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+        img {
+            width: 49%; /* Ogni video prende metà della larghezza */
+            height: 100%; /* Ogni video occupa l'intera altezza disponibile */
+            object-fit: cover; /* Assicura che il video copra tutto senza distorsioni */
+        }
+
+        /* Stili per i dispositivi mobili */
+       @media (max-width: 768px) {
+            .video-container {
+                flex-direction: column; /* Cambia l'orientamento in verticale sui dispositivi mobili */
+            }
+            video {
+                width: 100%; /* Ogni video occupa tutta la larghezza sul telefono */
+                height: 50%; /* Ogni video prende metà altezza sul telefono */
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>Picamera2 MJPEG Streaming Demo</h1>
-<img src="stream.mjpg" width="640" height="480" />
+<div id="contenitore"> 
+     <img src="stream.mjpg" / >
+     <img src="stream.mjpg" / >
+    
+</div>
 </body>
 </html>
 """
+
+
 
 
 class StreamingOutput(io.BufferedIOBase):
