@@ -98,7 +98,7 @@ class Read_Microbit(threading.Thread):
             data = s.readline().decode()[:-1]
             #print(data)
             q.put(data)  # Attenzione alla corretta indentazione
-            time.sleep(0.3)
+            time.sleep(0.1)
 			
 def main():
 	robot = AlphaBot()
