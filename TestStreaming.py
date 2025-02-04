@@ -14,7 +14,7 @@ from picamera2 import Picamera2
 from picamera2.encoders import JpegEncoder
 from picamera2.outputs import FileOutput
 
-PAGE = """\
+PAGE = """
 <html>
 <head>
 <title>Telecamera RoboticPow3r!!!</title>
@@ -23,31 +23,30 @@ PAGE = """\
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden; /* Evita le barre di scorrimento */
-            background-color: #000; /* Sfondo nero per migliorare l'effetto */
+            overflow: hidden;
+            background-color: #000;
         }
         .contenitore {
             display: flex;
-            flex-direction: row; /* Dispone i video orizzontalmente */
+            flex-direction: row;
             justify-content: center;
             align-items: center;
             height: 100%;
             width: 100%;
         }
         img {
-            width: 49%; /* Ogni video prende metà della larghezza */
-            height: 100%; /* Ogni video occupa l'intera altezza disponibile */
-            object-fit: cover; /* Assicura che il video copra tutto senza distorsioni */
+            width: 49%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        /* Stili per i dispositivi mobili */
-       @media (max-width: 768px) {
+        @media (max-width: 768px) {
             .video-container {
-                flex-direction: column; /* Cambia l'orientamento in verticale sui dispositivi mobili */
+                flex-direction: column;
             }
             video {
-                width: 100%; /* Ogni video occupa tutta la larghezza sul telefono */
-                height: 50%; /* Ogni video prende metà altezza sul telefono */
+                width: 100%;
+                height: 50%;
             }
         }
     </style>
@@ -56,14 +55,10 @@ PAGE = """\
 <div id="contenitore"> 
      <img src="stream.mjpg" / >
      <img src="stream.mjpg" / >
-    
 </div>
 </body>
 </html>
 """
-
-
-
 
 class StreamingOutput(io.BufferedIOBase):
     def __init__(self):
@@ -122,7 +117,8 @@ class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
 
 
 picam2 = Picamera2()
-picam2.configure(picam2.create_video_configuration(main={"size": (640, 480)}))
+picam2.configure(picam2.create_video_configuration(main={"size": (1280, 720)}))
+picam2.set_controls({"ScalerCrop": (0, 0, 3280, 2464)})  # Massimizza il campo visivo
 output = StreamingOutput()
 picam2.start_recording(JpegEncoder(), FileOutput(output))
 
