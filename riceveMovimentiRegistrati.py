@@ -1,4 +1,3 @@
-# Imports go at the top
 from microbit import *
 import radio
 radio.on()
@@ -9,5 +8,5 @@ while True:
     message = radio.receive()
     if message:
         display.show(message)
-
-    sleep(200)
+        print(message) #manda messaggio sulla seriale
+    sleep(100)

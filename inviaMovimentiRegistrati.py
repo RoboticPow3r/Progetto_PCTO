@@ -1,20 +1,21 @@
 from microbit import *
 import radio
-
+import music
 
 radio.on()
 radio.config(group=23)
 
 
-uart.init(baudrate=9600, tx=pin0, rx=pin1)
-
 
 # Funzione per controllare inclinazione sull'asse Y (Avanti/Indietro)
 def controllo_avanti_indietro():
     y = accelerometer.get_y()
-    if y > 400:
+    if y > 600:
+        music.set_tempo(bpm=150)
+        music.play(music.BA_DING)
+        music.set_tempo(bpm=150)
         return "I"  # avanti
-    elif y < -400:
+    elif y < -600:
         return "A"  # indietro
     else:
         return "N"  # neutrale
@@ -22,9 +23,9 @@ def controllo_avanti_indietro():
 # Funzione per controllare inclinazione sull'asse X (Sinistra/Destra)
 def controllo_sinistra_destra():
     x = accelerometer.get_x()
-    if x > 400:
+    if x > 600:
         return "D"  # destra
-    elif x < -400:
+    elif x < -600:
         return "S"  # sinistra
     else:
         return "N"  # neutrale
@@ -37,17 +38,14 @@ while True:
     # Invia i comandi rilevati via radio
     if movimento_y != "N":
         display.show(movimento_y)  # Mostra il comando sul display
-        uart.write(movimento_y)
-        #radio.send(movimento_y)
+        radio.send(movimento_y)
 
     elif movimento_x != "N":
         display.show(movimento_x)  # Mostra il comando sul display
-        uart.write(movimento_x)
-        #radio.send(movimento_x)
+        radio.send(movimento_x)
     
     else:
         display.show("N")  # Stato neutrale
-        uart.write("N")
-        #radio.send("N")
+        radio.send("N")
     
-    sleep(1000)
+    sleep(100)
