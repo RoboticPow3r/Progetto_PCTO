@@ -1,6 +1,6 @@
 # Progetto_PCTO 2025
 
-#Team:
+# Team:
 Belmondo Pietro
 Bernardi Andrea
 Gastaldi Andrea
