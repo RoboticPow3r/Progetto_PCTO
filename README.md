@@ -10,15 +10,16 @@ Abbiamo sviluppato un sistema in cui i pazienti, grazie a specifici movimenti, p
 L’obiettivo è rendere la riabilitazione più motivante, trasformando quindi gli esercizi in un’esperienza più interattiva e stimolante. In questo modo, il paziente non solo svolge i movimenti terapeutici, ma riesce anche a svagarsi e divertirsi!
 
 ## Materiale utilizzato:
-- 1 alphabot-  2 microbit
-1 raspberry pi camera v2 
-2 supporti stampati con stampanti 3d
-1 motore 
-1 potenziometro da 1kΩ
-1 supporto per 6 pile di tipo AA
-vari jumper per collegamenti tra i componenti del controller
-1 saldatrice a stagno
-1 pistola per la colla a caldo 
+- 1 alphabot
+- 2 microbit
+- 1 raspberry pi camera v2 
+- 2 supporti stampati con stampanti 3d
+- 1 motore 
+- 1 potenziometro da 1kΩ
+- 1 supporto per 6 pile di tipo AA
+- Jumper per collegamenti tra i componenti del controller
+- 1 saldatrice a stagno
+- Pistola per la colla a caldo 
 
 ## Librerie:
 ## Server:
