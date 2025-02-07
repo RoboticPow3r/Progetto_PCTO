@@ -13,7 +13,7 @@ Abbiamo sviluppato un sistema in cui i pazienti, grazie a specifici movimenti, p
 -Collegare il motore al supporto delle 6 pile in modo da dare alimentazione, collegare insieme anche un potenziometro, in modo da poter controllare la potenza del motore.
 -Inserire il tutto all’interno del tubo cavo e fissare il tutto con la colla a caldo.
 -Chiudere il tubo con il supporto in legno che avrà fissato su di esso il supporto del microbit.
-### MICROBIT
+### MicroBit:
 All’interno del nostro progetto abbiamo utilizzato due micro:bit. Sul primo abbiamo salvato il codice inviaMovimentiRegistrati.py, il cui scopo è rilevare i movimenti della persona e restituire in output una lettera che rappresenta il movimento rilevato:
 "A" per avanti,
 "I" per indietro,
@@ -26,7 +26,7 @@ Il secondo micro:bit è collegato via USB all'AlphaBot, che lo alimenta e riceve
 ## Obiettivo:
 L’obiettivo è rendere la riabilitazione più motivante, trasformando quindi gli esercizi in un’esperienza più interattiva e stimolante. In questo modo, il paziente non solo svolge i movimenti terapeutici, ma riesce anche a svagarsi e divertirsi!
 
-## Materiale utilizzato:
+## Materiale Utilizzato:
 - 1 alphabot
 - 2 microbit
 - 1 raspberry pi camera v2 
@@ -48,7 +48,7 @@ L’obiettivo è rendere la riabilitazione più motivante, trasformando quindi g
 - treading
 - radio (per MicroBit)
 - music (per MicroBit)
-### Da installare (estrene): 
+### Da installare (esterne): 
 - RPi.GPIO (su Alphabot)
 - picamera2 (su Alphabot)
 - microbit
@@ -63,7 +63,6 @@ Come Funziona
 Pagina Web di Streaming: Quando avvii il server, si apre una pagina web che mostra il video in diretta dalla telecamera. Il video è trasmesso come immagini JPEG (formato MJPEG) che il browser mostra in tempo reale.
 Server Web: Il codice crea un server che ascolta sulla porta 8000 e rende disponibile il flusso video. Puoi accedere a questa pagina web dal browser di qualsiasi dispositivo sulla stessa rete del Raspberry Pi.
 Esegui il file Python per avviare il server:
-bash
 Copia
 python3 TestStreaming.py
 Accedi al video: Una volta che il server è in esecuzione, apri un browser e vai all'indirizzo:
@@ -76,5 +75,3 @@ Nota
 Assicurati che il Raspberry Pi e il dispositivo su cui visualizzi il video siano sulla stessa rete Wi-Fi.
 La qualità del video dipende dalla tua connessione di rete.
 Con queste informazioni, chiunque può facilmente configurare e utilizzare questo server per visualizzare il video dalla telecamera del Raspberry Pi su un browser web.
-
-
