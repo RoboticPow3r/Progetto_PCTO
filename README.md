@@ -22,6 +22,16 @@ L’obiettivo è rendere la riabilitazione più motivante, trasformando quindi g
 - Pistola per la colla a caldo 
 
 ## Librerie:
+### Già installate (standard di Python):
+- time
+- io
+- logging
+- socket server
+- http.server
+- treading
+### Da installare (estrene): 
+- RPi.GPIO
+- picamera2
 ## Server:
 Questo codice permette di trasmettere in diretta il video di una telecamera collegata a un Raspberry Pi, rendendolo visibile su un browser web. È pensato per collegare una telecamera a un robot (come l'Alphabot), ma può essere utilizzato con qualsiasi telecamera compatibile con Raspberry Pi.
 Requisiti
