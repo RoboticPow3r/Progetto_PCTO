@@ -1,5 +1,5 @@
-## Team:
-Belmondo Pietro  Bernardi Andrea  Gastaldi Andrea  Goletto Matteo  Fasulo Alice
+# Team:
+Belmondo Pietro, Bernardi Andrea, Gastaldi Andrea, Goletto Matteo, Fasulo Alice
 
 ## Idea del Nostro Progetto:
 Il nostro progetto innovativo unisce tecnologia e riabilitazione per aiutare le persone affette da sclerosi multipla. L’idea alla base è semplice ma potente: trasformare i movimenti riabilitativi in un’attività interattiva e coinvolgente.
@@ -8,10 +8,15 @@ Abbiamo sviluppato un sistema in cui i pazienti, grazie a specifici movimenti, p
 ## Realizzazione:
 ###  Come realizzare il Joystick : 
 -Stampare con una stampante 3d 1 supporto che faccia da contenitore per il microbit,se ne trovano di diversi in rete. 
+
 -Realizzare una base per appoggiare il  supporto del microbit in modo da collegare il microbit al tubo.
+
 -Procurarsi un tubo cilindrico che faccia da impugnatura, l’impugnatura deve essere  cava all’interno.
+
 -Collegare il motore al supporto delle 6 pile in modo da dare alimentazione, collegare insieme anche un potenziometro, in modo da poter controllare la potenza del motore.
+
 -Inserire il tutto all’interno del tubo cavo e fissare il tutto con la colla a caldo.
+
 -Chiudere il tubo con il supporto in legno che avrà fissato su di esso il supporto del microbit.
 ### MicroBit:
 All’interno del nostro progetto abbiamo utilizzato due micro:bit. Sul primo abbiamo salvato il codice inviaMovimentiRegistrati.py, il cui scopo è rilevare i movimenti della persona e restituire in output una lettera che rappresenta il movimento rilevato:
@@ -23,9 +28,11 @@ All’interno del nostro progetto abbiamo utilizzato due micro:bit. Sul primo ab
 Questo micro:bit è stato posizionato sulla parte superiore di un joystick, da noi creato. In base al movimento del braccio, cambia l’output. La trasmissione dell’output avviene tramite onde radio, perciò è necessario importare nei codici dei due micro:bit la libreria radio, che consente la comunicazione tramite lo stesso canale. Tramite la funzione radio.send(), inviamo l’output al secondo micro:bit.Inoltre, quando viene rilevato il movimento "I" (indietro), il micro:bit emette dei suoni che simulano la retromarcia di un'auto. Per farlo, abbiamo importato la libreria music e utilizzato le sue funzioni per riprodurre il suono.
 Il secondo micro:bit è collegato via USB all'AlphaBot, che lo alimenta e riceve in seriale i dati trasmessi dal micro:bit posizionato sul joystick. Su questo secondo micro:bit è salvato il codice riceveMovimentiRegistrati.py, il cui scopo è ricevere, tramite la funzione radio.receive(), il messaggio inviato dal primo micro:bit e trasmetterlo all'AlphaBot. 
 È importante che entrambi i codici includano le librerie radio e microbit, e che i canali di trasmissione siano gli stessi, altrimenti i due dispositivi non potrebbero comunicare. Inoltre, entrambi i codici utilizzano la funzione sleep(), che stabilisce il tempo di trasmissione tra i due micro:bit. I valori impostati devono essere identici, altrimenti potrebbero verificarsi problemi di sincronizzazione.
+### Alphabot
+Per programmare l'Alphabot, è necessario inserire al suo interno una microSD sulla quale è stato installato Raspberry Pi. Successivamente, nel suo ambiente di sviluppo, abbiamo scaricato le librerie necessarie per l'esecuzione dei nostri programmi (elencate di seguito). Abbiamo poi caricato i programmi precedentemente sviluppati e testati per garantire il corretto funzionamento del robot. Per consentire il movimento dell'Alphabot, il micro:bit ricevente trasmette i dati in seriale al robot. Quest'ultimo, sfruttando i thread, riceve ed interpreta i segnali, eseguendo le funzioni che controllano i motori in base ai comandi ricevuti. All'interno del ciclo while True, utilizzato per la gestione dell'input in tempo reale, è fondamentale impostare un tempo di attesa con la funzione time.sleep(), che deve essere sincronizzato con quello dei micro:bit per evitare ritardi o desincronizzazioni nei movimenti.
+Per migliorare l'esperienza ed il controllo remoto, abbiamo montato sull'Alphabot una Raspberry Pi Camera Module v2 utilizzando un supporto dedicato. La telecamera è integrata con un web server che abbiamo sviluppato per consentire la visualizzazione delle immagini in tempo reale. L'interfaccia del sito web è stata progettata con una suddivisione in due sezioni simmetriche, così da garantire una corretta visualizzazione delle immagini attraverso un visore per la realtà aumentata o per un controllo più intuitivo.
 ## Obiettivo:
 L’obiettivo è rendere la riabilitazione più motivante, trasformando quindi gli esercizi in un’esperienza più interattiva e stimolante. In questo modo, il paziente non solo svolge i movimenti terapeutici, ma riesce anche a svagarsi e divertirsi!
-
 ## Materiale Utilizzato:
 - 1 alphabot
 - 2 microbit
