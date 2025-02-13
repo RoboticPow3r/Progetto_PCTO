@@ -5,8 +5,6 @@ import music
 radio.on()
 radio.config(group=23)
 
-
-
 # Funzione per controllare inclinazione sull'asse Y (Avanti/Indietro)
 def controllo_avanti_indietro():
     y = accelerometer.get_y()
